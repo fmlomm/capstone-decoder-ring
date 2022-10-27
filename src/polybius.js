@@ -6,6 +6,24 @@
 const polybiusModule = (function () {
   // you can add any code you want within this function scope
 
+//  create polybius chart that sets letter to a number for use later, could set as object within array for cleaner organization
+  let polybiusChart = [];
+// create encoder helper function for use in polybius function later
+  function encoder(input) {
+// set input to a lowercase string so we don't have to code for capital letters
+    let fixedInput = input.toLowerCase();
+//  for loop to access each letter in fixedInput
+    for (let i = 0; i < fixedInput.length; i++) {
+      let firstLetter = fixedInput[i];
+// first thoughts: maybe use replace for each firstLetter and replace with number that matches in polybiusChart
+    }
+  };
+
+  function decoder(input) {
+  // no need to use .toLowerCase() here since we are working with numbers
+  }
+}
+
   function polybius(input, encode = true) {
     // your solution code here
   }
