@@ -1,7 +1,7 @@
 // Write your tests here!
 const { expect } = require("chai");
 const { caesar } = require("../src/caesar");
-const caesarModule = require("../src/caesar");
+
 
 describe("caesar", () => {
     it("should encode the input by the value of shift in terms of ASCII to create an encoded output", () => {
