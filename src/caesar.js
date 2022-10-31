@@ -3,7 +3,6 @@
 // Only add code (helper methods, variables, etc.) within the scope
 // of the anonymous function on line 6
 
-const first = require("ee-first");
 
 const caesarModule = (function () {
   // you can add any code you want within this function scope

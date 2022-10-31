@@ -3,8 +3,6 @@
 // Only add code (helper methods, variables, etc.) within the scope
 // of the anonymous function on line 6
 
-const e = require("cors");
-const first = require("ee-first");
 
 const substitutionModule = (function () {
   // variable to store trueAlphabet for use in encoder and decoder
