@@ -47,11 +47,11 @@ const substitutionModule = (function () {
 
   function decoder (input, alphabet) {
     let output = "";
-    let alphabetTest = alphabetCheck(alphabet);
-    input = input.toLowerCase();
-
-  // if alphabet is empty, return false
+   // if alphabet is empty, return false
     if (!alphabet) return false;
+    input = input.toLowerCase();
+    
+    let alphabetTest = alphabetCheck(alphabet);
   // if alphabetTest fails, return false
     if (!alphabetTest) return false;
   // return false if alphabet is not 26 items long
