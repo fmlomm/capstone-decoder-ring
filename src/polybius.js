@@ -16,13 +16,16 @@ const polybiusModule = (function () {
     let fixedInput = input.replace(/ /g, '00')
 // if input has less than two numbers, return false as it does not use the polybius square terminology
     if (fixedInput.length % 2 != 0) return false;
-//  uses regex check to see if 
+//  uses regex check to see if anything in fixed input matches 
     let inputArray = fixedInput.match(/../g);
 
     let output = '';
+    // for loop to access index of input array
     for (let i = 0; i < inputArray.length; i++) {
+    // conditional to skip spaces if inlcluded in input
       if(inputArray[i] == '00') {
         output += ' ';
+    // else add letter based on position in cipherArray
       } else {
         let alphabetIndex = ciperArray.indexOf(Number(inputArray[i]))
         output += decodingAlpha[alphabetIndex]
@@ -35,14 +38,17 @@ const polybiusModule = (function () {
 // set string to lowercase so we don't have to deal with capital letters
   let fixedInput = input.toLowerCase();
   let output = '';
-
+// for loop to access index of fixedInput
   for (let i = 0; i < fixedInput.length; i++) {
+// if the string includes a letter from alphabet, add to end string
     if (!alphabet.includes(fixedInput[i])) {
       output += fixedInput[i];
     }
+// makes sure that both i and j convert to 42
     if (fixedInput[i] == 'i' || fixedInput[i] == 'j') {
       output += '42'
     }
+// switches input[i] to corresponding number set in square array
     for (let row in square) {
       if (square[row].includes(fixedInput[i])) {
         output += `${square[row].indexOf(fixedInput[i])+1}` + `${row}`
