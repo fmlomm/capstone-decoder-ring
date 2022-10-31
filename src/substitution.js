@@ -3,51 +3,84 @@
 // Only add code (helper methods, variables, etc.) within the scope
 // of the anonymous function on line 6
 
+const e = require("cors");
+const first = require("ee-first");
+
 const substitutionModule = (function () {
-  // you can add any code you want within this function scope
+  // variable to store trueAlphabet for use in encoder and decoder
+  let trueAlphabet = "abcdefghijklmnopqrstuvwxyz";
+
+  // checks to see that all letters / symbols of given alphabet are unique
+  function alphabetCheck(alphabet) {
+    return new Set(alphabet).size == alphabet.length;
+  } 
 
   function encoder(input, alphabet) {
-    return input
-  }
+    let output = "";
+  // checks if alphabet is missing, and return false 
+    if (!alphabet) return false;
+  // allows function to ignore uppercase letters
+    input = input.toLowerCase();
+    // if alphabet is empty, return false
+    let alphabetTest = alphabetCheck(alphabet);
+    // if alphabetTest fails, return false
+    if (!alphabetTest) return false;
+    // if alphabet is not 26 items long, return false
+    if (alphabet.length != 26) return false;
+
+    // alphabet param should exactly be 26 characters, if it is, iterate, if not return false
+      for (let i = 0; i < input.length; i++) {
+        let firstLetter = input[i];
+        // ignore capital letters
+          // edge cases : spaces should be ignored, and added to output
+          if (firstLetter == " ") {
+              output += " "
+          // add given alphabet to output at location of trueAlphabet
+          } else {
+            let index = trueAlphabet.indexOf(firstLetter);
+            output += alphabet[index]
+        }
+      }
+      return output;
+    }
+    
 
   function decoder (input, alphabet) {
-    return input
+    let output = "";
+    let alphabetTest = alphabetCheck(alphabet);
+    input = input.toLowerCase();
+
+  // if alphabet is empty, return false
+    if (!alphabet) return false;
+  // if alphabetTest fails, return false
+    if (!alphabetTest) return false;
+  // return false if alphabet is not 26 items long
+    if (alphabet.length != 26) return false;
+
+      for (let i = 0; i < input.length; i++) {
+        let firstLetter = input[i];
+          if (firstLetter == " ") {
+            output += " "
+          } else {
+            let index = alphabet.indexOf(firstLetter);
+            output += trueAlphabet[index];
+          }
+      }
+    return output;
   }
 
   
 
   function substitution(input, alphabet, encode = true) {
     // your solution code here
-    let output = "";
-
-    let letters = new Set ([]);
-    // alphabet param should exactly be 26 characters, which could include special characters
-    if (alphabet.length == 26) {
-      for (let i = 0; i < input.length; i++) {
-        let firstLetter = input[i];
-         // check to make sure all characters in alphabet are unique, else return false 
-        if (letters.has(firstLetter)) {
-          return false;
-        }
-        // ignore capital letters
-        if (firstLetter.toLowerCase() === firstLetter) {
-          // edge cases : spaces should be ignored
-          if (firstLetter != " ") {
-
-          } 
-        }
-
-
-
-
-
-
-      }
-    
-  } else {
-    return false;
+    if (encode) {
+      return encoder(input, alphabet)
+    } else {
+      return decoder(input, alphabet)
     }
   }
+
+
   return {
     substitution,
   };
@@ -55,7 +88,5 @@ const substitutionModule = (function () {
 
 module.exports = { substitution: substitutionModule.substitution };
 
-// how to implement (encoder) : check string , and input[i] replace with given substitution alphabet
-// how to implement (decoder) : set string to lowercase, check string, and replace string[i] with regular alphabet
 
 

@@ -15,11 +15,9 @@ const polybiusModule = (function () {
 // uses regex to replace spaces with 00 to use our decoding and encoding tools
     let fixedInput = input.replace(/ /g, '00')
 // if input has less than two numbers, return false as it does not use the polybius square terminology
-    if (input.length % 2 != 0) return false;
+    if (fixedInput.length % 2 != 0) return false;
 //  uses regex check to see if 
     let inputArray = fixedInput.match(/../g);
-
-    console.log(inputArray);
 
     let output = '';
     for (let i = 0; i < inputArray.length; i++) {
@@ -67,6 +65,7 @@ const polybiusModule = (function () {
     }
   };
 
+  console.log(polybius("happy birthday eula"))
 
   return {
     polybius,
