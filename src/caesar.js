@@ -71,7 +71,7 @@ const caesarModule = (function () {
     }
   }
 
-  console.log(caesar("happy birthday eula", 24));
+
 
   return {
     caesar,

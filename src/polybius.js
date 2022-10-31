@@ -65,7 +65,7 @@ const polybiusModule = (function () {
     }
   };
 
-  console.log(polybius("happy birthday eula"))
+
 
   return {
     polybius,
